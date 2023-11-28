@@ -94,6 +94,10 @@ const app = Vue.createApp({
 
             this.attackPlayer();
         },
+
+        surrender() {
+            this.winner = 'monster';
+        },
     }
 
 });
