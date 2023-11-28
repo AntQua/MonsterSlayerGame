@@ -15,10 +15,17 @@ const app = Vue.createApp({
 
     computed: {
         monsterBarStyles() {
+            // set the bar to exactely 0 if the game is over
+            if (this.monsterHealth < 0) {
+                return { width: '0%' };
+            }
             return { width: this.monsterHealth + '%' }
-
         },
+
         playerBarStyles() {
+            if (this.playerHealth < 0) {
+                return { width: '0%' };
+            }
             return { width: this.playerHealth + '%' }
         },
 
@@ -38,7 +45,7 @@ const app = Vue.createApp({
                 this.winner = 'monster';
             }
         },
-        
+
         monsterHealth(value) {
             if (value <= 0 && this.playerHealthHealth <= 0) {
                 this.winner = 'draw';
