@@ -9,6 +9,7 @@ const app = Vue.createApp({
             playerHealth: 100,
             monsterHealth: 100,
             currentRound: 0,
+            winner: null, // by default null is a falsy value in js
         };
     },
 
@@ -24,6 +25,27 @@ const app = Vue.createApp({
         mayUseSpecialAttack() {
             //only have access to the special attack every 3 rounds
             return this.currentRound % 3 !== 0
+        }
+    },
+
+    //logic to check who wins using a watcher to check the two properties playerHealth and monsterHealth
+    watch: {
+        playerHealth(value) {
+            if (value <= 0 && this.monsterHealth <= 0) {
+                this.winner = 'draw';
+            } else if (value <= 0) {
+                // Player lost
+                this.winner = 'monster';
+            }
+        },
+        
+        monsterHealth(value) {
+            if (value <= 0 && this.playerHealthHealth <= 0) {
+                this.winner = 'draw';
+            } else if (value <= 0) {
+                // Monster lost
+                this.winner = 'player';
+            }
         }
     },
 
