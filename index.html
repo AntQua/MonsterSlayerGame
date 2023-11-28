@@ -37,6 +37,7 @@
             <h3 v-if="winner === 'monster'">You Lost!</h3>
             <h3 v-else-if="winner === 'player'">You Won!</h3>
             <h3 v-else>It's a Draw</h3>
+            <button @click="startGame">Start New Game</button>
         </section>
 
         <!-- this section only shows if we dont have a winner. Use v-if="!winner" or v-else is possible because the next section is a direct neighbour of the previous section were we use v-if="winner" -->
